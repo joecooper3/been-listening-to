@@ -12,7 +12,7 @@ import RatingItem from "../components/RatingItem";
 
 import Title from "../components/home/Title";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await dbConnect();
 
   /* find all the data in our database */
