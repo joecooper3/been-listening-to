@@ -7,7 +7,7 @@ export const artistNamesToString = (arr: string[]): string => {
     let finalString: string = "";
     for (let i = 0; i < arr.length; i++) {
       if (i !== arr.length - 1) {
-        finalString += `${arr[i]},`;
+        finalString += `${arr[i]}, `;
       } else {
         finalString += `and ${arr[i]}`;
       }

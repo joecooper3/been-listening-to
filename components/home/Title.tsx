@@ -19,8 +19,8 @@ const containerVariants = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 150 },
-  show: { opacity: 1, y: 0, transition: { duration: 1 } },
+  hidden: { y: 100 },
+  show: { y: 0, transition: { duration: 0.5 } },
 };
 
 type TitleProps = {
@@ -55,6 +55,10 @@ const Header = styled(motion.h1)`
   flex-flow: row wrap;
   transform-origin: top left;
   overflow: hidden;
+
+  div {
+    overflow: hidden;
+  }
 
   div:first-child {
     width: 100%;

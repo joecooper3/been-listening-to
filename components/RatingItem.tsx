@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 import PlayLinks from "./PlayLinks";
 import { IRating } from "../interfaces/interfaces";
 
 import { artistNamesToString, genresToString } from "../utils/formatters";
 
-const RatingItem: React.FC<{ data: IRating; variants: any }> = ({
+const RatingItem: React.FC<{ data: IRating; variants: Variants }> = ({
   data,
   variants,
 }) => {
@@ -20,11 +20,12 @@ const RatingItem: React.FC<{ data: IRating; variants: any }> = ({
     playLinks,
   } = data;
   const imageUrl = albumArt.url;
+
   return (
-    <Container variants={variants}>
-      <AlbumArt src={imageUrl} alt={`${albumName}`} />
+    <Container layout variants={variants}>
+      <AlbumArt src={imageUrl} alt={`${albumName}`} layout />
       <PlayLinks playLinks={playLinks} />
-      <Meta>
+      <Meta layout>
         <Artist>{artistNamesToString(artistNames)}</Artist>
         <AlbumName>{albumName}</AlbumName>
         <Details>{releaseYear}</Details>
@@ -40,17 +41,18 @@ const Container = styled(motion.article)`
   display: grid;
   grid-template-columns: 135px 110px 1fr;
   grid-template-rows: 63px 1fr;
+  width: 100%;
   max-width: 625px;
 `;
 
-const AlbumArt = styled.img`
+const AlbumArt = styled(motion.img)`
   grid-column: 1 / 3;
   grid-row: 1 / -1;
   width: 100%;
   z-index: 2;
 `;
 
-const Meta = styled.div`
+const Meta = styled(motion.div)`
   background: var(--white);
   grid-column: 2 / -1;
   grid-row: 2;
@@ -59,12 +61,12 @@ const Meta = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  line-height: 1.3;
 `;
 
 const Artist = styled.h2`
   font-size: 36px;
   color: var(--blue);
-  line-height: 1.3;
   margin: 10px 0;
 `;
 
@@ -80,4 +82,5 @@ const Details = styled.p`
   color: var(--blue);
   font-size: 18px;
   margin: 10px 0;
+  l
 `;

@@ -1,8 +1,5 @@
+import { AnimateSharedLayout } from "framer-motion";
 
 export default function Layout({ children }) {
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <AnimateSharedLayout>{children}</AnimateSharedLayout>;
 }
