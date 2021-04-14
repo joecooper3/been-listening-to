@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion, Variants } from "framer-motion";
 
 import PlayLinks from "./PlayLinks";
+import Score from "./Score";
 import { IRating } from "../interfaces/interfaces";
 
 import { artistNamesToString, genresToString } from "../utils/formatters";
@@ -17,6 +18,7 @@ const RatingItem: React.FC<{ data: IRating; variants: Variants }> = ({
     artistNames,
     releaseYear,
     genres,
+    score,
     playLinks,
   } = data;
   const imageUrl = albumArt.url;
@@ -31,6 +33,7 @@ const RatingItem: React.FC<{ data: IRating; variants: Variants }> = ({
         <Details>{releaseYear}</Details>
         <Details>{genresToString(genres)}</Details>
       </Meta>
+      {score > 0 && <Score score={score} />}
     </Container>
   );
 };
@@ -40,14 +43,14 @@ export default RatingItem;
 const Container = styled(motion.article)`
   display: grid;
   grid-template-columns: 135px 110px 1fr;
-  grid-template-rows: 63px 1fr;
+  grid-template-rows: 63px auto 30px auto 1fr;
   width: 100%;
   max-width: 625px;
 `;
 
 const AlbumArt = styled(motion.img)`
   grid-column: 1 / 3;
-  grid-row: 1 / -1;
+  grid-row: 1 / 3;
   width: 100%;
   z-index: 2;
 `;
@@ -55,7 +58,7 @@ const AlbumArt = styled(motion.img)`
 const Meta = styled(motion.div)`
   background: var(--white);
   grid-column: 2 / -1;
-  grid-row: 2;
+  grid-row: 2 / 5;
   padding: 30px 20px 30px 130px;
   text-align: center;
   display: flex;
