@@ -30,11 +30,6 @@ export interface IRating extends Document {
   albumArt: IAlbumArt;
 }
 
-export interface InquirerPages {
-  start: number;
-  end: number;
-}
-
 export interface AlbumPage {
   playLinks: IPlayLinks;
   artistUrls?: string[];
